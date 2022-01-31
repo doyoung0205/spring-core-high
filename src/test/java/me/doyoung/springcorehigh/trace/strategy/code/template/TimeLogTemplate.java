@@ -1,26 +1,16 @@
-package me.doyoung.springcorehigh.trace.strategy.code;
+package me.doyoung.springcorehigh.trace.strategy.code.template;
 
 import lombok.extern.slf4j.Slf4j;
 
-/**
- * 필드에 전략을 보관하는 방식
- */
 @Slf4j
-public class ContextV1 {
-    private final Strategy strategy;
-
-    public ContextV1(Strategy strategy) {
-        this.strategy = strategy;
-    }
-
-    public void execute() {
+public class TimeLogTemplate {
+    public void execute(Callback callback) {
         final long startTime = System.currentTimeMillis();
         // 비즈니스 로직 실행
-        strategy.call(); //
+        callback.call(); // 위임
         // 비즈니스 로직 종료
         final long endTime = System.currentTimeMillis();
         final long resultTime = endTime - startTime;
         log.info("resultTime={}", resultTime);
     }
-
 }

@@ -1,10 +1,10 @@
 package me.doyoung.springcorehigh.trace.strategy;
 
 import lombok.extern.slf4j.Slf4j;
-import me.doyoung.springcorehigh.trace.strategy.code.ContextV2;
-import me.doyoung.springcorehigh.trace.strategy.code.Strategy;
-import me.doyoung.springcorehigh.trace.strategy.code.StrategyLogic1;
-import me.doyoung.springcorehigh.trace.strategy.code.StrategyLogic2;
+import me.doyoung.springcorehigh.trace.strategy.code.strategy.ContextV2;
+import me.doyoung.springcorehigh.trace.strategy.code.strategy.Strategy;
+import me.doyoung.springcorehigh.trace.strategy.code.strategy.StrategyLogic1;
+import me.doyoung.springcorehigh.trace.strategy.code.strategy.StrategyLogic2;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
