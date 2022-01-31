@@ -46,4 +46,29 @@ public class TemplateMethodTest {
         AbstractTemplate template2 = new SubClassLogic2();
         template2.execute();
     }
+
+
+    /**
+     * 템플릿 메서드 패턴, 익명 내부 클래스 구현
+     */
+    @Test
+    void templateMethodV2() {
+        final AbstractTemplate template = new AbstractTemplate() {
+            @Override
+            protected void call() {
+                log.info("비즈니스 로직1 실행");
+            }
+        };
+        log.info("클래스 이름1={}", template.getClass());
+        template.execute();
+
+        final AbstractTemplate template2 = new AbstractTemplate() {
+            @Override
+            protected void call() {
+                log.info("비즈니스 로직1 실행");
+            }
+        };
+        log.info("클래스 이름2={}", template2.getClass());
+        template2.execute();
+    }
 }
