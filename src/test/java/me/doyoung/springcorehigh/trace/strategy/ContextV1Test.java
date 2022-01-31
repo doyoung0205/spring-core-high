@@ -48,4 +48,13 @@ public class ContextV1Test {
         final ContextV1 contextV2 = new ContextV1(strategyLogic2);
         contextV2.execute();
     }
+
+    /**
+     * 전략 패턴 사용
+     */
+    @Test
+    void strategyV2() {
+        new ContextV1(() -> log.info("비즈니스 로직  실행")).execute();
+        new ContextV1(() -> log.info("비즈니스 로직 2 실행")).execute();
+    }
 }
