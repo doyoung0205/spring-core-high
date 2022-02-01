@@ -4,8 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class CacheProxy implements Subject {
-
-    private Subject target;
+    private final Subject target;
     private String cacheValue;
 
     public CacheProxy(Subject target) {
