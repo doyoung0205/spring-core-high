@@ -39,3 +39,9 @@ bean : 스프링 전용 포인트컷 지시자, 빈의 이름으로 지정한다
 ``` 
 bean(orderService) || bean(*Repository) * 과 같은 패턴을 사용할 수 있다.
 ```
+
+
+### 매개변수 전달
+
+#### this, target, args, @target, @within, @annotation, @args
+
