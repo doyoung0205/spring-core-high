@@ -166,32 +166,277 @@ cf). 스프링의 의존관계 주입도 이런 방식이다.
 ### 3장
 <details>
 <summary>
-Q
+프록시가 무엇인가?
 </summary>
 <div markdown="1">
 <hr/>
-A
+
+클라이언트가 서버로 요청을 할 때,
+중간에 대리자처럼 클라이언트의 요청이나 서버의 요청 결과를 조작할 수 있다.
+
+- 접근 제어
+  - 캐싱
+  - 권한에 따른 접근 차단
+  - 지연로딩
+- 부가 기능을 추가
+  - ex1. 요청 값이나, 응답 값을 중간에 변형 
+  - 실행 시간을 측정해서 추가 로그를 남긴다.
+- 프록시 체인
+
+프록시는 서버와 같은 인터페이스를 사용해서
+서버 객체를 프록시 객체로 변경해도 클라이언트 코드를 변경하지 않고 동작 할 수 있어야 한다.
+
+
+
+
 </div>
 </details>
 
 
 <details>
 <summary>
-Q
+프록시를 이용하는 프록시 패턴의 목적은 무엇인가?
 </summary>
 <div markdown="1">
 <hr/>
-A
+다른 개체에 대한 접근을 제어하기 위해 대리자를 제공
+
+### 참고
+- `proxy/hello.proxy.pureproxy.proxy`
 </div>
 </details>
 
 
 <details>
 <summary>
-Q
+프록시를 이용하는 데코레이터 패턴의 목적은 무엇인가?
 </summary>
 <div markdown="1">
 <hr/>
-A
+객체에 추가 책임(기능)을 동적으로 추가하고, 기능 확장을 위한 유연한 대안 제공
+
+### 참고
+-  `proxy/hello.proxy.pureproxy.decorator`
+
 </div>
 </details>
+
+
+
+<details>
+<summary>
+클래스 기반의 프록시의 단점이 무엇인가?
+</summary>
+<div markdown="1">
+<hr/>
+
+자바 기본 문법에 의해 자식 클래스를 생성할 때는 
+항상 `super()`로 부모 클래스의 생성자를 호출해야한다.
+
+이 부분을 생략하면 기본 생성자가 자동으로 호출 되는데,
+만약 부모클래스의 기본 생성자가 없다면 생성자에서 파라미터 1개를 필수로 받는다.
+
+만약 부모의 기능을 사용하지 않을 경우 `super(null)` 을 입력해도 되지만
+인터페이스 기반 프록시는 이런 고민을 하지 않아도 된다.
+
+또한, 클래스의 final 키워드나 메소드의 final 키워드가 붙으면 상속의 어려움이 있다.
+
+#### 참고
+- `OrderControllerConcreteProxy`
+</div>
+</details>
+
+
+
+<details>
+<summary>
+인터페이스 기반의 프록시의 단점은 무엇인가?
+</summary>
+<div markdown="1">
+<hr/>
+
+[//]: # (// TODO)
+</div>
+</details>
+
+
+### 4장
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
