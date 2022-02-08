@@ -630,10 +630,12 @@ AOP의 타겟(Target) 이란 무엇인가
 
 <details>
 <summary>
-
+어드바이스의 순서를 보장 받고 싶다면 어떻게 해야하는가?
 </summary>
 <div markdown="1">
 <hr/>
+
+어드바이스 단위가 아니라 클래스 단위로 분리를 해서 `@Order` 어노테이션을 통해 순서를 보장할 수 있다.
 
 </div>
 </details>
@@ -642,10 +644,17 @@ AOP의 타겟(Target) 이란 무엇인가
 
 <details>
 <summary>
-
+스프링 AOP 의 어드바이스 종류는 무엇이 있는가? 
 </summary>
 <div markdown="1">
 <hr/>
+
+- @Around: 메서드 호출 전후에 수행, **조인 포인트 실행 여부 선택**, 반환 값 변환, 예외 변환 등이 가능
+- @Before: 조인 포인트 실행 이전에 실행
+- @AfterReturning: 조인 포인트가 정상 완료후 실행
+- @AfterThrowing: 메서드가 예외를 던지는 경우 실행
+- @After: 조인 포인트가 정상 또는 예외에 관곙벗이 실행(finally)
+
 
 </div>
 </details>
@@ -654,10 +663,12 @@ AOP의 타겟(Target) 이란 무엇인가
 
 <details>
 <summary>
-
+@Around vs 나머지 어드바이스의 joinpoint 차이점
 </summary>
 <div markdown="1">
 <hr/>
+
+@Around 는 ProceedingJoinPoint 을 사용해야 한다. proceed()
 
 </div>
 </details>
