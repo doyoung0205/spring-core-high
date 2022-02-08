@@ -738,14 +738,22 @@ execution(* hello.aop.member.MemberService.*(..))
 </details>
 
 
-### 11장
+### 11장 (중요)
 
 <details>
 <summary>
-
+프록시와 내부 호출 문제에 대해서 설명하시오.
 </summary>
 <div markdown="1">
 <hr/>
+
+AOP를 적용하려면 항상 프록시를 통해서 대상 객체(Target)을 호출해야 한다.
+
+이렇게 해야 프록시에서 먼저 어드바이스를 호출하고, 이후에 대상 객체를 호출한다.
+
+하지만, 대상 객체의 내부에서 메서드 호출이 발생하면 프록시를 거치지 않고 대상 객체를 직접 호출 하는 문제가 발생한다.
+
+
 
 </div>
 </details>
@@ -754,10 +762,45 @@ execution(* hello.aop.member.MemberService.*(..))
 
 <details>
 <summary>
-
+프록시와 내부 호출 문제 대안을 설명하시오.
 </summary>
 <div markdown="1">
 <hr/>
+
+1. 자기 자신 주입
+
+```java
+/**
+* 참고: 생성자 주입은 순환 사이클을 만들기 때문에 실패한다.
+*/
+  @Slf4j
+  @Component
+  public class CallServiceV1 {
+    private CallServiceV1 callServiceV1;
+  }
+
+```
+
+스프링 부트 2.6부터는 순환 참조를 기본적으로 금지하도록 정책이 변경되었다.
+따라서 
+> spring.main.allow-circular-references=true 설정이 필수다.
+
+
+2. 대안2 지연 조회
+
+```
+private final ObjectProvider<CallServiceV2> callServiceProvider;
+```
+
+스프링 컨테이너에서 조회하는 것을 스프링 빈 생성 시점이 아니라 실제 객체를 사용하는 지점으로 지연할 수 있다.
+따라서 순환 사이클이 발생하지 않으면서 프록시 객체를 사용할 수 있다.
+
+
+3. 대안3 구조 변경
+
+가장 나은 대안은 내부 호출이 발생하지 않도록 구조를 변경하는 것이다.
+즉, 기존에 내부 메서드 호출을 클래스를 따로 만들어 외부 메서드 호출로 변경하는 것
+
 
 </div>
 </details>
@@ -766,10 +809,21 @@ execution(* hello.aop.member.MemberService.*(..))
 
 <details>
 <summary>
-
+public 메서드에만 AOP가 적용되는 이유는?
 </summary>
 <div markdown="1">
 <hr/>
+
+AOP는 주로 트랜잭션 적용이나 주요 컴포넌트의 로그 출력 기능에 사용된다.
+쉽게 이야기해서 인터페이스에 메서드가 나올 정도의 규모에 AOP를 적용하는 것이 적당하다.
+
+더 풀어서 이야기하자면 AOP는 `public` 메서드에만 적용한다.
+
+AOP 적용을 위해 `private` 메서드를 외부 클래스로 변경하고 `public` 으로 변경하는 일은 거의 없다.
+
+`public` 메서드에서 `public` 메서드를 내부 호출하는 경우에는 문제가 발생한다.
+
+따라서 AOP 가 잘 적용되지 않으면 내부 호출을 의심해보자.
 
 </div>
 </details>
@@ -778,10 +832,19 @@ execution(* hello.aop.member.MemberService.*(..))
 
 <details>
 <summary>
-
+JDK 동적 프록시 한계가 무엇인가?
 </summary>
 <div markdown="1">
 <hr/>
+
+인터페이스 기반으로 프록시를 생성하는 JDK 동적 프록시는 구체 클래스로 타입 캐스팅이 불가능한 한계가 있다.
+
+JDK 동적 Proxy 에서는 interface 타입이 타겟 클래스 타입이고 이를 실제 interface 를 구현하는 
+
+구현체 타입으로 변경하는데 있어서 예외가 발생한다.
+
+반면에 CGLIB 프록시는 타겟 클래스 타입이 실제 구현체 타입과 같아 캐스팅의 문제가 없다.
+
 
 </div>
 </details>
@@ -790,10 +853,17 @@ execution(* hello.aop.member.MemberService.*(..))
 
 <details>
 <summary>
-
+CGLIB 프록시의 한계 를 스프링은 어떻게 개선 하였는가?
 </summary>
 <div markdown="1">
 <hr/>
+
+- 기본 생성자 필수 
+  - -> 스프링 4.0부터 objenesis 라이브러리를 통해 기본 생성자 없어도 생성 가능하게 해줌
+- 생성자 2번 호출 (1. 실제 target 객체 생성시, 2. target 객체 생성시 target 부모 클래스 생성자 호출)
+  - -> 스프링 4.0부터 objenesis 라이브러리 덕분에 가능
+- final 키워드 클래스, 메서드 사용 불가
+  - 일반적인 웹 어플리케이션을 개발할 때는 final 을 잘 사용하지 않기 때문에 특별한 문제가 되지 않음.
 
 </div>
 </details>
