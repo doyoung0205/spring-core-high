@@ -451,18 +451,26 @@ implementation 'org.springframework.boot:spring-boot-starter-aop'
 
 ### 7장
 
-
 <details>
 <summary>
-
+@Aspect 프록시 란 무엇인가?
 </summary>
 <div markdown="1">
 <hr/>
+
+포인트컷과 어드바이스로 구성되어 있는 어드바이저 생성 기능을 지원하는 어노테이션이다.
+
+
+#### 참고 
+
+- `aop/hello.aop.pointcut.AtAnnotationTest.java`
 
 </div>
 </details>
 
 
+### 8장
+
 
 <details>
 <summary>
@@ -470,6 +478,8 @@ implementation 'org.springframework.boot:spring-boot-starter-aop'
 </summary>
 <div markdown="1">
 <hr/>
+
+
 
 </div>
 </details>
