@@ -336,10 +336,20 @@ CGLIB 가 무엇인가?
 
 <details>
 <summary>
-
+프록시 팩토리가 무엇인가?
 </summary>
 <div markdown="1">
 <hr/>
+
+스프링은 유사한 구체적인 기술들이 있을 때, 그것들을 통합해서 일관성 있게 접근할 수 있고,
+더욱 편리하게 사용할 수 있는 추상화된 기술을 제공한다.
+
+스프링은 동적 프록시를 통합해서 편리하게 만들어주는 프록시 팩토리(ProxyFactory) 라는 기능을 제공한다.
+
+- 인터페이스가 있으면 JDK 동적 프록시 사용 (MethodInterceptor 상속)
+- 구체 클래스 라면 CGLIB 를 사용 (MethodInterceptor 구현)
+
+`org.aopalliance.intercet.MethodInterceptor` 를 구현한 `Advice` 를 작성한다.
 
 </div>
 </details>
@@ -348,11 +358,13 @@ CGLIB 가 무엇인가?
 
 <details>
 <summary>
-
+포인트컷이란 무엇인가?
 </summary>
 <div markdown="1">
 <hr/>
-
+어디에 부가 기능을 적용할지, 않할지를 판단하는 필터링 조직이다.
+<br/>
+이름 그대로 어떤 포인트(Point)에 기능을 적용할지 않을지 잘라서(cut) 구분하는 것이다.
 </div>
 </details>
 
@@ -360,11 +372,11 @@ CGLIB 가 무엇인가?
 
 <details>
 <summary>
-
+어드바이스란 무엇인가?
 </summary>
 <div markdown="1">
 <hr/>
-
+프록시가 호출하는 부가 기능이다. 프록시 로직으로 말할 수 있다.
 </div>
 </details>
 
@@ -372,15 +384,15 @@ CGLIB 가 무엇인가?
 
 <details>
 <summary>
-
+어드바이저란 무엇인가?
 </summary>
 <div markdown="1">
 <hr/>
-
+포인트컷 하나와 어드바이스 하나를 묶는 것을 의미한다.
 </div>
 </details>
 
-
+### 6장
 
 <details>
 <summary>
