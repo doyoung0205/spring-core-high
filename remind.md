@@ -674,6 +674,131 @@ AOP의 타겟(Target) 이란 무엇인가
 </details>
 
 
+### 10장
+
+<details>
+<summary>
+포인트컷 중 execution 의 문법이 무엇인가?
+</summary>
+<div markdown="1">
+<hr/>
+
+execution(접근제어자? 반환타입 선언타입?메서드이름(파라미터) 예외?)
+
+- 메소드 실행 조인 포인트를 매칭한다.
+- ?는 생략 할 수 있다.
+- `*` 같은 패턴을 지정할 수 있다.
+
+
+```
+execution(* *(..)
+execution(public String hello.aop.member.MemberServiceImpl.hello(String))
+```
+
+부모 타입 허용
+
+```
+execution(* hello.aop.member.MemberService.*(..))
+```
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+다음 포인트컷 지시자는 단독으로 사용하면 안되는 이유는 무엇인가? 
+
+`args, @args, @target`
+
+</summary>
+<div markdown="1">
+<hr/>
+
+`args, @args, @target` 는 실제 객체 인스턴스가 생성되고 실행될 때 어드바이스 적용 여부를 확인할 수 있다.
+
+실행 시점에 일어나는 포인트컷 적용 여부도 결국 프록시가 있어야 실행 시점에 판단할 수 있다.
+<br/>
+프록시가 없다면 판단 자체가 불가능하다. 그런데 스프링 컨테이너가 프록시를 생성하는 시점은 스프링 컨테이너가 만들어지는 
+애플리케이션 로딩 시점에 적용할 수 있다.
+
+따라서 `args, @args, @target` 같은 포인트컷 지시자가 있으면 스프링은 모든 스프링 빈에 AOP를 적용하려고 시도한다.
+앞서 설명한 것 처럼 프록시가 없으면 실행 시점에 판단 자체가 불가능하다.
+
+문제는 이렇게 모든 스프링 빈에 AOP 프록시를 적용하려고 하면 스프링이 내부에서 사용하는 빈 중에는 
+
+`final`로 지정된 빈들도 있기 때문에 오류가 발생할 수 있다.
+
+> 따라서 이러한 표현식은 최대한 프록시 적용 대상을 축소하는 표현식과 함께 사용해야 한다.
+
+
+
+</div>
+</details>
+
+
+### 11장
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
 
 <details>
 <summary>
