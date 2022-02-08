@@ -396,10 +396,27 @@ CGLIB 가 무엇인가?
 
 <details>
 <summary>
-
+빈 후처리기가 무엇인가?
 </summary>
 <div markdown="1">
 <hr/>
+스프링이 빈 저장소에 등록할 목적으로 생성한 객체를 빈 저장소에 등록하기 직전에 조작하고 싶다면 빈후처리기를 사용하면 된다.
+
+`BeanPostProcessor` 를 구현하여 빈 후처리기를 만들 수 있다.
+</div>
+</details>
+
+
+
+<details>
+<summary>
+프록시를 빈 후처리기로 처리했을 때 문제점은 ? 
+</summary>
+<div markdown="1">
+<hr/>
+
+1. ProxyFactoryConfig 가 많아진다.
+2. 컴포넌트 스캔에 등록된 빈들은 자동으로 등록하기 때문에 프록시 적용이 불가능 하다
 
 </div>
 </details>
@@ -408,26 +425,31 @@ CGLIB 가 무엇인가?
 
 <details>
 <summary>
-
+자동 프록시 생성기 - AutoProxyCreator 는 무엇인가?
 </summary>
 <div markdown="1">
 <hr/>
+
+`AnnotationAwareAspectJAutoProxyCreator` 라는 빈 후처리기가 스프링 빈에 자동 등록된다.
+`Advisor` 또는 `@Aspect` 등을 자동으로 인식해서 프록시가 필요한 곳에 자동으로 등록한다.
+
+
+
+자동 프록시 생성기를 사용하려면
+```    
+implementation 'org.springframework.boot:spring-boot-starter-aop' 
+```
+의존성 주입을 받아야한다.
+그리고, `@EnableAspectJAutoProxy` 를 직접 사용해야하지만 스프링부트에서는 자동으로 처리해준다.
+
+
+
 
 </div>
 </details>
 
 
-
-<details>
-<summary>
-
-</summary>
-<div markdown="1">
-<hr/>
-
-</div>
-</details>
-
+### 7장
 
 
 <details>
