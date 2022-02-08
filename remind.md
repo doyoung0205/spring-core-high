@@ -474,12 +474,190 @@ implementation 'org.springframework.boot:spring-boot-starter-aop'
 
 <details>
 <summary>
+AOP 란 무엇인가?
+</summary>
+<div markdown="1">
+<hr/>
+
+부가 기능을 핵심 기능에서 분리하고 한 곳에서 관리할 수 있도록
+해당 부가 기능을 어디에 적용할지 선택하고 어떤 부가 기능을 적용할지 정의한 것.
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+AOP 적용 방식 3가지가 무엇인가?
+</summary>
+<div markdown="1">
+<hr/>
+
+1. 컴파일 시점
+
+.java 에서 .class 하는 과정에서 AspectJ에서 제공하는 특별한 컴파일을 사용해서 위빙을 사용하여 적용한다.
+
+- 컴파일 시점에 부가 기능을 적용하려면 특별한 컴파일러도 필요하고 복잡하다. 
+2. 클래스 로딩 시점
+
+.class 파일을 JVM 내부의 클래스 로더에 보관하는데 
+중간에 java Instrumentation 를 활용하여 클래스 로더에 조작하여 보관한다. 
+
+- 로드 타임 위빙은 자바를 실행할 때 특별한 옵션( java -javaagent )을 통해 클래스 로더 조작기를 지정해야 하는데, 이 부분이 번거롭고 운영하기 어렵다. 
+
+3. 런타임 시점(프록시)
+
+런타임 시점은 컴파일도 다 끝나고, 클래스 로더에 클래스도 다 올라가서 이미 자바가 실행되고 난 다음을 의미한다.
+
+따라서 스프링과 같은 컨테이너의 도움을 받고 프록시와 DI, 빈 포스트 프로세서 같은 개념들을 총 동원해야 한다.
+
+이렇게 하면 최종적으로 프록시를 통해 스프링 빈에 부가 기능을 적용할 수 있다.
+
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+조인 포인트 란 무엇인가?
+</summary>
+<div markdown="1">
+<hr/>
+
+- 어드바이스가 적용될 수 있는 위치, 메소드 실행, 생성자 호출, 필드 값 접근, static 메서드 접근 같은 프로그램 실행 중 지점
+- AOP를 적용할 수 있는 모든 지점
+- 스프링 AOP 는 프록시 방식을 사용하므로 조인 포인트는 항상 메소드 실행 지점으로 제한된다.
+
+</div>
+</details>
+
+
+<details>
+<summary>
+포인트컷 이란 무엇인가?
+</summary>
+<div markdown="1">
+<hr/>
+
+- 조인 포인트 중에서 어드바이스가 적용될 위치를 선별하는 기능
+- 주로 AspectJ 표현식을 사용해서 지정
+- 프록시를 사용하는 스프링 AOP는 메서드 실행 지점만 포인트컷으로 선별 가능
+
+</div>
+</details>
+
+
+<details>
+<summary>
+AOP의 타겟(Target) 이란 무엇인가
+</summary>
+<div markdown="1">
+<hr/>
+
+어드바이스를 받는 객체, 포인트컷으로 결정
+
+</div>
+</details>
+
+
+<details>
+<summary>
+어드바이스란 무엇인가?
+</summary>
+<div markdown="1">
+<hr/>
+
+- 부가 기능
+- 특정 조인 포인트에서 Aspect에 의해 취해지는 조치
+- Around(주변), Before(전), After(후)와 같은 다양한 종류의 어드바이스가 있음
+
+</div>
+</details>
+
+
+<details>
+<summary>
+에스펙트란 무엇인가?
+</summary>
+<div markdown="1">
+<hr/>
+
+- 어드바이스 + 포인트컷을 모듈화 한 것
+- @Aspect 를 생각하면 됨
+- 여러 어드바이스와 포인트 컷이 함께 존재
+
+</div>
+</details>
+
+
+<details>
+<summary>
+어드바이저(Advisor) 란 무엇인가?
+</summary>
+<div markdown="1">
+<hr/>
+
+- 하나의 어드바이스와 하나의 포인트 컷으로 구성
+- 스프링 AOP 에서만 사용되는 특별한 용어
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+위빙 (Weaving) 이란 무엇인가?
+</summary>
+<div markdown="1">
+<hr/>
+
+- 포인트컷으로 결정한 타겟의 조인 포인트에 어드바이스를 적용하는 것
+- 위빙을 통해 핵심 기능 코드에 영향을 주지 않고 부가 기능을 추가 할 수 있음
+- AOP 적용을 위해 애스펙트를 객체에 연결한 상태
+  - 컴파일 타임(AspectJ compiler)
+  - 로드 타임
+  - 런타임, 스프링 AOP는 런타임, 프록시 방식
+  
+</div>
+</details>
+
+
+### 9장
+
+<details>
+<summary>
 
 </summary>
 <div markdown="1">
 <hr/>
 
+</div>
+</details>
 
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
+
+</div>
+</details>
+
+
+
+<details>
+<summary>
+
+</summary>
+<div markdown="1">
+<hr/>
 
 </div>
 </details>
