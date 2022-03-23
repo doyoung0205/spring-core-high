@@ -869,26 +869,3 @@ CGLIB 프록시의 한계 를 스프링은 어떻게 개선 하였는가?
 </details>
 
 
-
-<details>
-<summary>
-
-</summary>
-<div markdown="1">
-<hr/>
-
-</div>
-</details>
-
-
-
-<details>
-<summary>
-
-</summary>
-<div markdown="1">
-<hr/>
-
-</div>
-</details>
-
